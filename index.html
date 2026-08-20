@@ -8,13 +8,12 @@
 
 <!-- ============================================================
      CONFIG — EDIT THESE TWO VALUES
-     1. Replace VIDEO_ID with the ID from your YouTube video URL.
-        Example: https://www.youtube.com/watch?v=dQw4w9WgXcQ  ->  VIDEO_ID = "dQw4w9WgXcQ"
+     1. Replace the video with your own later — see the "Video player"
+        comment in the HTML below.
      2. Replace CHANNEL_URL with your channel link.
         Example: https://www.youtube.com/@YourChannel
      ============================================================ -->
 <script>
-  const VIDEO_ID = "aqz-KE-bpKQ"; // demo video (Big Buck Bunny) — replace with your own later
   const CHANNEL_URL = "https://www.youtube.com/@YOUR_CHANNEL";
 </script>
 
@@ -40,16 +39,25 @@
 
   .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
 
-  header { text-align: center; padding: 64px 20px 32px; }
+  header {
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
   .logo {
-    display: inline-block;
-    margin-bottom: 20px;
+    display: block;
+    margin-bottom: 28px;
   }
   .logo img {
-    max-width: 180px;
-    max-height: 90px;
+    max-width: 320px;
+    max-height: 160px;
     width: auto;
     height: auto;
+    filter: drop-shadow(0 0 30px rgba(255, 90, 31, 0.25));
   }
   .badge {
     display: inline-block;
@@ -82,7 +90,15 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: #000;
   }
-  .video-shell iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-shell iframe, .video-shell video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  .video-note {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-top: 12px;
+  }
+  .video-note a { color: var(--accent-2); }
 
   section { padding: 40px 0; }
   h2 {
@@ -174,13 +190,21 @@
 
 <main class="wrap">
 
-  <!-- YouTube video embed -->
+  <!-- Video player
+       To use your own video later:
+       - Upload your webinar to YouTube, then replace the iframe below
+         (search for "youtube-nocookie.com/embed/") to keep the embed,
+       - OR host your own .mp4 file and change the <video> src below. -->
   <div class="video-shell">
-    <iframe id="replayVideo" src="about:blank"
-      title="Webinar Replay Video"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen></iframe>
+    <video id="replayVideo" controls playsinline preload="metadata"
+      poster="https://media.w3.org/2010/05/sintel/poster.png">
+      <source src="https://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
+  <p class="video-note">
+    Demo video — Sintel (open movie). Will be replaced with your webinar replay.
+  </p>
 
   <!-- What you'll learn -->
   <section>
@@ -225,7 +249,6 @@
 
 <script>
   var iframe = document.getElementById("replayVideo");
-  iframe.src = "https://www.youtube.com/embed/" + VIDEO_ID;
 
   var btns = ["channelBtn", "footerLink"];
   btns.forEach(function (id) {
