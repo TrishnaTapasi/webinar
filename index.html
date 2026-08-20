@@ -192,18 +192,19 @@
 
   <!-- Video player
        To use your own video later:
-       - Upload your webinar to YouTube, then replace the iframe below
-         (search for "youtube-nocookie.com/embed/") to keep the embed,
-       - OR host your own .mp4 file and change the <video> src below. -->
+       - Upload your webinar to YouTube, then replace the video ID
+         (aqz-KE-bpKQ) in the iframe src below with your own.
+         Example: https://www.youtube.com/watch?v=dQw4w9WgXcQ  ->  use dQw4w9WgXcQ
+       - OR host your own .mp4 file and replace the iframe with a <video> tag. -->
   <div class="video-shell">
-    <video id="replayVideo" controls playsinline preload="metadata"
-      poster="https://media.w3.org/2010/05/sintel/poster.png">
-      <source src="https://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    <iframe id="replayVideo"
+      src="https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ?rel=0&modestbranding=1&playsinline=1"
+      title="Webinar Replay Video"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
   </div>
   <p class="video-note">
-    Demo video — Sintel (open movie). Will be replaced with your webinar replay.
+    Demo video — Big Buck Bunny. Will be replaced with your webinar replay.
   </p>
 
   <!-- What you'll learn -->
